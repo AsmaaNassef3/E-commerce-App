@@ -1,0 +1,44 @@
+<section class="max-w-xl mx-auto py-10 px-6 rounded-2xl bg-white shadow-2xl animate-fadeIn">
+  <h1 class="text-center text-4xl font-bold mb-8 text-neutral-800 flex items-center justify-center gap-2">
+    <i class="fa-solid fa-credit-card text-gray-500 animate-pulse"></i>
+    Checkout
+  </h1>
+  <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()" class="space-y-6">
+    <div>
+      <label for="details" class="mb-2 font-semibold text-neutral-700 flex items-center gap-2">
+        <i class="fa-solid fa-location-dot text-gray-400"></i> Address
+      </label>
+      <textarea formControlName="details" id="details" rows="2"
+        class="modern-input resize-none w-full p-3 rounded-lg border border-neutral-200 focus:border-neutral-400 focus:ring-2 focus:ring-neutral-300 bg-white text-neutral-800 placeholder:text-neutral-400 transition-all duration-300 shadow-sm"
+        placeholder="Enter your address..." required></textarea>
+    </div>
+    <div>
+      <label for="phone" class="mb-2 font-semibold text-neutral-700 flex items-center gap-2">
+        <i class="fa-solid fa-phone text-gray-400"></i> Phone
+      </label>
+      <input formControlName="phone" id="phone" type="tel"
+        class="modern-input w-full p-3 rounded-lg border border-neutral-200 focus:border-neutral-400 focus:ring-2 focus:ring-neutral-300 bg-white text-neutral-800 placeholder:text-neutral-400 transition-all duration-300 shadow-sm"
+        placeholder="Enter your phone number..." required pattern="^01[0125][0-9]{8}$" />
+    </div>
+    <div>
+      <label for="city" class="mb-2 font-semibold text-neutral-700 flex items-center gap-2">
+        <i class="fa-solid fa-city text-gray-400"></i> City
+      </label>
+      <input formControlName="city" id="city" type="text"
+        class="modern-input w-full p-3 rounded-lg border border-neutral-200 focus:border-neutral-400 focus:ring-2 focus:ring-neutral-300 bg-white text-neutral-800 placeholder:text-neutral-400 transition-all duration-300 shadow-sm"
+        placeholder="Enter your city..." required />
+    </div>
+    <div class="flex flex-col md:flex-row justify-between gap-6 pt-4">
+      <button type="submit"
+        [disabled]="!checkOutForm.valid"
+        class="checkout-btn flex-1 flex items-center justify-center gap-2 bg-neutral-800 text-white text-xl font-semibold py-3 rounded-lg shadow-lg transition-all duration-300 hover:bg-neutral-700 focus:ring-2 focus:ring-neutral-400 disabled:opacity-50 disabled:cursor-not-allowed">
+        <i class="fa-brands fa-cc-visa"></i> Online Payment
+      </button>
+      <button type="button"
+        [disabled]="!checkOutForm.valid"
+        class="checkout-btn flex-1 flex items-center justify-center gap-2 bg-neutral-200 text-neutral-800 text-xl font-semibold py-3 rounded-lg shadow-lg transition-all duration-300 hover:bg-neutral-300 focus:ring-2 focus:ring-neutral-400 disabled:opacity-50 disabled:cursor-not-allowed">
+        <i class="fa-solid fa-sack-dollar"></i> Cash
+      </button>
+    </div>
+  </form>
+</section>

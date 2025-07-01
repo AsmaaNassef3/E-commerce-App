@@ -1,0 +1,89 @@
+
+
+<section class="mx-5">
+
+
+<div class="section my-5">
+  <div class="grid md:grid-cols-[70%_30%] gap-6">
+    <div>
+      <owl-carousel-o [options]="customMainSlider">
+        <ng-template carouselSlide><img src="/images2/slider-image-3.jpeg" alt="img" class="w-full h-[350px] rounded-xl object-cover shadow-lg transition-transform duration-700 hover:scale-105"/></ng-template>
+        <ng-template carouselSlide><img src="/images2/img2.avif" alt="img" class="w-full h-[350px] rounded-xl object-cover shadow-lg transition-transform duration-700 hover:scale-105"/></ng-template>
+        <ng-template carouselSlide><img src="/images2/img3.avif" alt="img" class="w-full h-[350px] rounded-xl object-cover shadow-lg transition-transform duration-700 hover:scale-105"/></ng-template>
+        <ng-template carouselSlide><img src="/images2/img4.avif" alt="img" class="w-full h-[350px] rounded-xl object-cover shadow-lg transition-transform duration-700 hover:scale-105"/></ng-template>
+        <ng-template carouselSlide><img src="/images2/img5.avif" alt="img" class="w-full h-[350px] rounded-xl object-cover shadow-lg transition-transform duration-700 hover:scale-105"/></ng-template>
+        <ng-template carouselSlide><img src="/images2/img6.avif" alt="img" class="w-full h-[350px] rounded-xl object-cover shadow-lg transition-transform duration-700 hover:scale-105"/></ng-template>
+      </owl-carousel-o>
+    </div>
+    <div class="flex flex-col gap-4 justify-between">
+      <img src="/images2/grocery-banner.png" alt="imge" class="w-full h-[170px] rounded-xl object-cover shadow-md"/>
+      <img src="/images2/img1.avif" alt="imge" class="w-full h-[170px] rounded-xl object-cover shadow-md"/>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="text-4xl py-3 font-bold text-blue-700 tracking-tight">Shop Popular Categories...</h2>
+  <owl-carousel-o [options]="customOptions">
+    @for (cat of categories(); track cat._id) {
+      <ng-template carouselSlide>
+        <div class="category-card flex flex-col items-center bg-gradient-to-b from-white via-yellow-50 to-blue-50 rounded-2xl shadow-lg p-0 hover:shadow-2xl transition-all duration-500 group relative overflow-hidden">
+          <div class="w-full h-[160px] flex items-center justify-center bg-gradient-to-t from-blue-50 via-yellow-50 to-white rounded-t-2xl overflow-hidden">
+            <img [src]="cat.image" alt="" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" />
+          </div>
+          <h3 class="w-full text-center py-4 text-blue-700 font-bold text-lg flex items-center justify-center gap-2 bg-white/90 border-t border-blue-100 group-hover:bg-yellow-50 transition-colors duration-300">
+            <i class="fa-solid fa-layer-group text-yellow-400"></i> {{cat.name}}
+          </h3>
+          <div class="absolute top-3 right-3 bg-white/80 rounded-full p-2 shadow-md animate-fadeIn">
+            <i class="fa-solid fa-star text-yellow-400"></i>
+          </div>
+        </div>
+      </ng-template>
+    }
+  </owl-carousel-o>
+</div>
+
+
+<div class="relative w-1/2 mx-auto mt-5">
+  <i class="fa fa-search absolute left-4 top-1/2 -translate-y-1/2 text-blue-400 text-lg"></i>
+  <input type="search" class="block bg-white/90 border border-blue-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 w-full p-4 ps-12 text-base text-blue-900 rounded-xl shadow transition-all duration-300 placeholder-gray-400 focus:shadow-lg" placeholder="Search your product" [(ngModel)]="text">
+</div>
+
+
+
+<div class="section py-5">
+  <h2 class="text-4xl py-3 font-bold text-blue-700 tracking-tight">Popular Products</h2>
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
+    @for (prodo of products()  | search : text; track prodo.id) {
+      <div class="card group bg-gradient-to-b from-white via-blue-50 to-white border border-blue-100 rounded-2xl overflow-hidden shadow-lg relative transition-transform duration-500 hover:scale-105 hover:shadow-2xl animate-fadeInUp">
+        <div [routerLink]="['/details',prodo.id]" class="cursor-pointer">
+          <div class="card-img relative overflow-hidden">
+            <img [src]="prodo.imageCover" class="w-full h-[210px] object-contain transition-transform duration-700 group-hover:scale-110" [alt]="prodo.title" />
+            <div class="absolute top-2 right-2 bg-white/80 rounded-full p-2 shadow flex items-center gap-1 animate-fadeIn">
+              <i class="fa-solid fa-eye text-blue-400"></i>
+            </div>
+          </div>
+          <div class="card-body px-3 py-4">
+            <h4 class="text-blue-400 text-xs font-semibold flex items-center gap-1"><i class="fa-solid fa-tag"></i> {{ prodo.category.name }}:</h4>
+            <h3 class="font-bold text-blue-900 text-lg mt-1 mb-2 truncate">{{ prodo.title.split("", 24).join("") }}</h3>
+            <div class="flex justify-between items-center mt-2">
+              <span class="text-xl font-bold text-blue-700">${{ prodo.price }}</span>
+              <div class="flex items-center gap-1">
+                <i class="fas fa-star text-yellow-400"></i>
+                <span class="text-blue-500 font-semibold">{{ prodo.ratingsAverage }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div (click)="AddToWishList(prodo.id)" class="absolute top-3 left-3 text-2xl text-blue-400 bg-white/90 rounded-full p-2 shadow-md cursor-pointer transition-colors duration-300 hover:bg-blue-100 animate-fadeIn">
+          <i class="fa-regular fa-heart"></i>
+        </div>
+        <button (click)="addToCart(prodo.id)" class="py-3 px-3 rounded-xl w-[90%] mx-auto block border border-blue-400 text-blue-700 font-semibold shadow-lg mt-3 transition-all duration-300 hover:bg-blue-600 hover:text-white animate-slideUp">Add to Cart <i class="fa-solid fa-cart-plus ms-2"></i></button>
+      </div>
+    }
+  </div>
+</div>
+
+
+
+</section>

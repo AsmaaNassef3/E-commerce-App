@@ -1,0 +1,75 @@
+<section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-cyan-100 to-blue-200 animate-fade-in">
+  <div class="w-full max-w-md rounded-3xl p-10 animate-slide-up">
+    <form [formGroup]="LoginForm" (ngSubmit)="submitForm()" class="space-y-6">
+      <div class="flex justify-center mb-4 animate-bounce-in">
+        <i class="fa-solid fa-user-lock text-5xl text-blue-500 drop-shadow"></i>
+      </div>
+      <h1 class="text-4xl text-center mb-3 font-bold text-blue-700 drop-shadow">Login</h1>
+
+      <div>
+        <label for="email" class="block mb-2 text-sm font-medium text-blue-700">Email</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+            <i class="fa-regular fa-envelope text-blue-400"></i>
+          </div>
+          <input formControlName="email" type="email" id="email"
+            class="bg-white border border-blue-200 text-blue-900 text-sm rounded-xl focus:ring-blue-400 focus:border-blue-400 block w-full ps-10 p-3 placeholder-blue-300 shadow-sm transition-all duration-200"
+            placeholder="name@gmail.com">
+        </div>
+        <!-- Email validation -->
+        <ng-container *ngIf="LoginForm.get('email')?.errors && LoginForm.get('email')?.touched">
+          <div class="register-validation" role="alert">
+            <ul class="mt-1.5 list-disc list-inside">
+              <li *ngIf="LoginForm.get('email')?.getError('required')">Email is required</li>
+              <li *ngIf="LoginForm.get('email')?.getError('email')">Enter a valid email</li>
+            </ul>
+          </div>
+        </ng-container>
+      </div>
+
+      <div>
+        <label for="password" class="block mb-2 text-sm font-medium text-blue-700">Password</label>
+        <div class="relative">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+            <i class="fa-solid fa-lock text-blue-400"></i>
+          </div>
+          <input placeholder="Enter your password" formControlName="password" type="password" id="password"
+            class="bg-white border border-blue-200 text-blue-900 text-sm rounded-xl focus:ring-blue-400 focus:border-blue-400 block w-full ps-10 p-3 placeholder-blue-300 shadow-sm transition-all duration-200">
+        </div>
+        <!-- Password validation -->
+        <ng-container *ngIf="LoginForm.get('password')?.errors && LoginForm.get('password')?.touched">
+          <div class="register-validation" role="alert">
+            <ul class="mt-1.5 list-disc list-inside">
+              <li *ngIf="LoginForm.get('password')?.getError('required')">Password is required</li>
+              <li *ngIf="LoginForm.get('password')?.getError('pattern')">Password must be 8-20 characters long, include uppercase, lowercase, number, and special character.</li>
+              <li *ngIf="LoginForm.get('password')?.getError('minlength')">Password must be at least 8 characters long.</li>
+              <li *ngIf="LoginForm.get('password')?.getError('maxlength')">Password cannot exceed 20 characters.</li>
+            </ul>
+          </div>
+        </ng-container>
+      </div>
+
+      <button type="submit" [disabled]="LoginForm.invalid || isLooding"
+        class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-600 text-white font-bold shadow-lg hover:scale-105 transition-transform duration-200 flex items-center justify-center gap-2 mt-6 disabled:opacity-50 disabled:cursor-not-allowed">
+        <span>Login</span>
+        <span *ngIf="isLooding"><i class="fas fa-spin fa-spinner"></i></span>
+      </button>
+
+      <div class="flex flex-col items-center mt-4 gap-2">
+        <span class="text-gray-600 text-sm">Don't have an account?
+          <a routerLink="/register" class="text-blue-600 hover:underline font-semibold">Register</a>
+        </span>
+        <a routerLink="/forgotpas" class="text-gray-500 hover:underline text-xs">Forgot Password?</a>
+      </div>
+
+      <p *ngIf="msgError" class="register-validation bg-red-100 border-red-300 text-red-800 mt-2">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        {{msgError}}
+      </p>
+      <p *ngIf="msgSuccess" class="register-validation bg-green-100 border-green-300 text-green-800 mt-2">
+        <i class="fa-solid fa-check"></i>
+        {{msgSuccess}}
+      </p>
+    </form>
+  </div>
+</section>

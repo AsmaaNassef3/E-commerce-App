@@ -1,0 +1,51 @@
+<div class="details-section w-full max-w-5xl mx-auto px-4 py-12 flex items-center justify-center animate-fadeInUp">
+  <div class="bg-white rounded-2xl p-8 shadow-2xl w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-10 gap-10 items-center">
+      <!-- Product Images -->
+      <div class="col-span-10 lg:col-span-4 flex flex-col items-center">
+        <div class="main-img-container w-full h-[320px] rounded-xl overflow-hidden shadow-lg mb-4 bg-gray-50 flex items-center justify-center animate-imgFadeIn">
+          <img [src]="currentMainImage" alt="Main Product" class="w-full h-full object-contain transition-transform duration-700 hover:scale-110" />
+        </div>
+        <div class="flex gap-2 overflow-x-auto w-full justify-center">
+          <img [src]="detailsProduct.imageCover" class="thumb-img w-16 h-16 object-cover rounded border-2 border-gray-200 hover:border-blue-500 transition cursor-pointer" (click)="changeMainImage(detailsProduct.imageCover)" />
+          @for (item of detailsProduct.images || []; track $index) {
+            <img [src]="item" class="thumb-img w-16 h-16 object-cover rounded border-2 border-gray-200 hover:border-blue-500 transition cursor-pointer" (click)="changeMainImage(item)" />
+          }
+        </div>
+      </div>
+      <!-- Product Info -->
+      <div class="col-span-10 lg:col-span-6 flex flex-col justify-center space-y-6 h-full">
+        <div>
+          <h1 class="text-3xl font-extrabold text-blue-700 flex items-center gap-2 animate-fadeInUp">
+            <i class="fa-solid fa-box-open text-blue-400"></i> {{detailsProduct.title}}
+          </h1>
+          <p class="text-gray-500 leading-relaxed text-base mt-2 animate-fadeInUp">{{detailsProduct.description}}</p>
+          <div class="flex items-center gap-3 mt-4 animate-fadeInUp">
+            <span class="text-2xl font-bold text-blue-600 flex items-center gap-1">
+              <i class="fa-solid fa-tag"></i> {{detailsProduct.price}} GBP
+            </span>
+            <span class="flex items-center gap-1 text-yellow-500 text-lg">
+              <i class="fa-solid fa-star"></i> {{detailsProduct.ratingsAverage || 0}}
+              <span class="text-sm text-gray-400">({{detailsProduct.ratingsQuantity || 0}} reviews)</span>
+            </span>
+          </div>
+          <div class="mt-4 grid grid-cols-2 gap-4 text-sm text-gray-500 animate-fadeInUp">
+            <p><i class="fa-solid fa-industry text-blue-400"></i> <span class="font-semibold text-blue-600">Brand:</span> <span class="font-medium text-gray-800">{{detailsProduct.brand.name || 'N/A'}}</span></p>
+            <p><i class="fa-solid fa-layer-group text-blue-400"></i> <span class="font-semibold text-blue-600">Category:</span> <span class="font-medium text-gray-800">{{detailsProduct.category.name || 'N/A'}}</span></p>
+          </div>
+        </div>
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-6 pt-6 animate-fadeInUp">
+          <button (click)="addToCart(detailsProduct._id)" class="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-10 py-3 rounded-lg font-semibold shadow-md transition-all duration-300 text-lg">
+            <i class="fa-solid fa-cart-plus"></i> Add to Cart
+          </button>
+          <button class="flex items-center justify-center gap-2 bg-gray-200 hover:bg-gray-300 text-blue-600 px-10 py-3 rounded-lg font-semibold shadow-md transition-all duration-300 text-lg">
+            <i class="fa-solid fa-chart-column"></i> Favorite
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

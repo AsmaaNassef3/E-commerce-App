@@ -1,0 +1,28 @@
+/* Modern glassmorphism and animation styles for forgot password page */
+h1 {
+  color: #0B9AAF;
+}
+button {
+  background: linear-gradient(90deg, #0B9AAF 0%, #3EC6E0 100%);
+  font-size: medium;
+  transition: transform 0.2s;
+}
+button:hover {
+  transform: scale(1.05);
+}
+input, .bg-white\/90 {
+  background: rgba(255,255,255,0.9) !important;
+  backdrop-filter: blur(8px);
+}
+.bg-white\/80 {
+  background: rgba(255,255,255,0.8) !important;
+  backdrop-filter: blur(12px);
+}
+section.auth-bg, .auth-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  animation: fade-in 0.7s;
+}

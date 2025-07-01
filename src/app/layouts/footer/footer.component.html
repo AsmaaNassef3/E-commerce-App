@@ -1,0 +1,46 @@
+<footer class="footer-main w-full bg-gradient-to-t from-[#23272f] to-[#334155] shadow-2xl pt-12 pb-6 px-4 md:px-12 lg:px-24 animate-footer-fade-in">
+  <div class="flex flex-col md:flex-row justify-between items-center w-full py-8 rounded-3xl gap-12 animate-slide-up">
+    <div class="flex flex-col gap-4 md:w-2/5 w-full items-start animate-fade-in">
+      <h3 class="text-4xl md:text-3xl font-extrabold text-gray-700 drop-shadow animate-bounce">Get the FreshCart App</h3>
+      <p class="text-gray-500 text-lg mb-6 font-medium">Experience next-level grocery shopping. Download the app for exclusive offers, fast delivery, and a seamless experience!</p>
+      <form class="w-full max-w-xl animate-pop-in">
+        <label for="footer-email" class="mb-2 text-base font-semibold text-gray-400 sr-only">Email</label>
+        <div class="relative">
+          <i class="fa-solid fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl"></i>
+          <input type="email" id="footer-email" class="block bg-white/90 border-gray-400 focus:border-white focus:ring-white w-full p-5 pl-14 text-lg text-[#1e232e] border-2 rounded-2xl shadow-lg placeholder:text-gray-400" placeholder="Enter your email for app link" required />
+          <button type="submit" class="text-white absolute end-3 bottom-3 bg-[#232f3e] hover:bg-[#11161c] focus:ring-4 focus:outline-none focus:ring-gray-500 font-bold rounded-xl text-lg px-6 py-3 shadow-xl transition-all duration-300 animate-shake-on-hover">Share App Link <i class="fa-solid fa-paper-plane ms-2 animate-bounce-x"></i></button>
+        </div>
+      </form>
+    </div>
+    <div class="flex flex-col gap-6 md:w-2/5 w-full items-center md:items-end animate-fade-in">
+      <span class="font-bold text-xl text-gray-700 tracking-wide animate-bounce">Payment Partners</span>
+      <div class="flex flex-wrap gap-8 items-center justify-center md:justify-end">
+        <img class="w-28 h-16 object-contain hover:scale-110 transition-transform duration-300 animate-img-pop" src="/images2/American-Express-Color.png" loading="lazy" alt="American Express">
+        <img class="w-28 h-16 object-contain hover:scale-110 transition-transform duration-300 animate-img-pop" src="/images2/get-apple-store.png" loading="lazy" alt="Apple Store">
+        <img class="w-28 h-16 object-contain hover:scale-110 transition-transform duration-300 animate-img-pop" src="/images2/paypal.png" loading="lazy" alt="PayPal">
+      </div>
+      <span class="font-bold text-xl text-gray-700 mt-4 tracking-wide animate-bounce">Get deliveries with FreshCart</span>
+      <div class="flex flex-wrap gap-8 items-center justify-center md:justify-end">
+        <img class="w-28 h-16 object-contain hover:scale-110 transition-transform duration-300 animate-img-pop" src="/images2/img4.avif" alt="Apple Store">
+        <img class="w-28 h-16 object-contain hover:scale-110 transition-transform duration-300 animate-img-pop" src="/images2/get-google-play.png" alt="Google Play">
+      </div>
+    </div>
+  </div>
+  <!-- <div class="w-full my-6 h-1 opacity-30 bg-white rounded-full shadow-lg animate-fade-in"></div> -->
+  <!-- <div class="flex flex-col md:flex-row justify-between items-center w-full text-gray-300 text-base gap-2 animate-fade-in">
+    <span class="font-semibold">&copy; 2025 FreshCart. All rights reserved.</span>
+    <span class="flex items-center gap-1 font-semibold">Made with <i class="fa-solid fa-heart text-[#23272f] animate-bounce"></i> by <span class="text-white font-bold">Your Team</span></span>
+  </div> -->
+  <style>
+    @keyframes pop-in { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+    .animate-pop-in { animation: pop-in 0.7s cubic-bezier(.4,2,.6,1); }
+    @keyframes bounce-x { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(8px); } }
+    .animate-bounce-x { animation: bounce-x 1.2s infinite; }
+    @keyframes shake-on-hover { 10%, 90% { transform: translateX(-2px); } 20%, 80% { transform: translateX(4px); } 30%, 50%, 70% { transform: translateX(-8px); } 40%, 60% { transform: translateX(8px); } }
+    .animate-shake-on-hover:hover { animation: shake-on-hover 0.5s; }
+    @keyframes slide-up { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .animate-slide-up { animation: slide-up 0.8s cubic-bezier(.4,2,.6,1); }
+    @keyframes img-pop { 0% { transform: scale(0.7); opacity: 0; } 80% { transform: scale(1.15); opacity: 1; } 100% { transform: scale(1); } }
+    .animate-img-pop { animation: img-pop 0.8s cubic-bezier(.4,2,.6,1); }
+  </style>
+</footer>

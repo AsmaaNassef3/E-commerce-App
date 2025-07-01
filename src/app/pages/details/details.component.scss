@@ -1,0 +1,74 @@
+h1{
+  color:#0B9AAF;
+}
+.main-btn{
+  color: #0e97ac;
+}
+.main-img-container {
+  position: relative;
+  background: #f3f4f6; // soft gray
+  box-shadow: 0 8px 32px 0 rgba(52, 120, 255, 0.10);
+  transition: box-shadow 0.4s, background 0.4s;
+  &:hover {
+    background: #f9fafb; // lighter gray on hover
+    box-shadow: 0 16px 48px 0 rgba(52, 120, 255, 0.18);
+  }
+  img {
+    filter: drop-shadow(0 4px 24px #3478ff22);
+    transition: transform 0.7s cubic-bezier(.4,2,.6,1), filter 0.4s;
+    &:hover {
+      transform: scale(1.12) rotate(-2deg);
+      filter: drop-shadow(0 8px 32px #3478ff33);
+    }
+  }
+}
+
+.thumb-img {
+  border: 2px solid #e0e7ff;
+  box-shadow: 0 2px 8px 0 #3478ff11;
+  transition: border 0.3s, box-shadow 0.3s, transform 0.4s;
+  cursor: pointer;
+  &:hover {
+    border: 2px solid #3478ff;
+    box-shadow: 0 4px 16px 0 #3478ff22;
+    transform: scale(1.08) rotate(-2deg);
+  }
+}
+
+// Attractive icon styles for details page
+.details-section i.fa-solid, .details-section i.fa-regular {
+  color: #3478ff;
+  background: none;
+  border-radius: 0;
+  padding: 0;
+  font-size: 1.25em;
+  box-shadow: none;
+  margin-right: 0.3em;
+  transition: color 0.3s, transform 0.3s;
+  vertical-align: middle;
+}
+.details-section i.fa-solid.fa-star {
+  color: #ffb450;
+  background: none;
+  box-shadow: none;
+}
+.details-section i.fa-solid.fa-tag {
+  color: #0ea5e9;
+  background: none;
+}
+.details-section i.fa-solid.fa-industry, .details-section i.fa-solid.fa-layer-group {
+  color: #6366f1;
+  background: none;
+}
+.details-section i.fa-regular.fa-heart {
+  color: #e11d48;
+  background: none;
+}
+.details-section i.fa-solid.fa-cart-plus {
+  color: #2563eb;
+  background: none;
+}
+.details-section i:hover {
+  transform: scale(1.18) rotate(-8deg);
+  filter: brightness(1.1);
+}

@@ -1,0 +1,102 @@
+<section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-cyan-100 to-blue-200 animate-fade-in">
+  <div class="w-full max-w-md bg-white/80 rounded-3xl shadow-2xl p-10 backdrop-blur-md border border-blue-100 animate-slide-up">
+    <div class="flex flex-col items-center mb-6">
+      <i class="fa-solid fa-unlock-keyhole text-5xl text-blue-500 animate-bounce"></i>
+      <h1 class="text-4xl text-center mb-2 font-bold text-blue-700 drop-shadow">Forgot Password</h1>
+      <p class="text-gray-500 text-center">Reset your password in three easy steps.</p>
+    </div>
+    <form *ngIf="step === 1" [formGroup]="verifyEmail" (ngSubmit)="verifyEmailSubmit()" class="space-y-6">
+      <div>
+        <label for="email" class="block mb-2 text-sm font-medium text-blue-700">Email</label>
+        <div class="relative">
+          <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-blue-300"></i>
+          <input formControlName="email" type="email" id="email"
+            class="pl-10 pr-4 py-3 w-full rounded-xl border border-blue-200 focus:ring-2 focus:ring-blue-400 focus:outline-none transition placeholder-gray-400 text-gray-700 bg-white/90 shadow-sm"
+            placeholder="name@gmail.com" />
+        </div>
+        <div *ngIf="verifyEmail.get('email')?.errors && verifyEmail.get('email')?.touched" class="text-red-500 text-xs mt-1 animate-fade-in">
+          <span *ngIf="verifyEmail.get('email')?.hasError('required')">Email is required</span>
+          <span *ngIf="verifyEmail.get('email')?.hasError('email')">Enter a valid email</span>
+        </div>
+      </div>
+      <button type="submit"
+        class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-600 text-white font-bold shadow-lg hover:scale-105 transition-transform duration-200 flex items-center justify-center gap-2">
+        <span>Verify Email</span>
+        <span *ngIf="isLooding"><i class="fas fa-spin fa-spinner"></i></span>
+      </button>
+    </form>
+    <form *ngIf="step === 2" [formGroup]="verifyCode" (ngSubmit)="verifyCodeSubmit()" class="space-y-6 animate-fade-in">
+      <div>
+        <label for="resetCode" class="block mb-2 text-sm font-medium text-blue-700">Verification Code</label>
+        <div class="relative">
+          <i class="fa-solid fa-key absolute left-3 top-1/2 -translate-y-1/2 text-blue-300"></i>
+          <input formControlName="resetCode" type="text" id="resetCode"
+            class="pl-10 pr-4 py-3 w-full rounded-xl border border-blue-200 focus:ring-2 focus:ring-blue-400 focus:outline-none transition placeholder-gray-400 text-gray-700 bg-white/90 shadow-sm"
+            placeholder="Enter the code" />
+        </div>
+        <div *ngIf="verifyCode.get('resetCode')?.errors && verifyCode.get('resetCode')?.touched" class="text-red-500 text-xs mt-1 animate-fade-in">
+          <span *ngIf="verifyCode.get('resetCode')?.hasError('required')">Code is required</span>
+          <span *ngIf="verifyCode.get('resetCode')?.hasError('pattern')">Code must be 6 digits</span>
+        </div>
+      </div>
+      <button type="submit"
+        class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-600 text-white font-bold shadow-lg hover:scale-105 transition-transform duration-200 flex items-center justify-center gap-2">
+        <span>Verify Code</span>
+        <span *ngIf="isLooding"><i class="fas fa-spin fa-spinner"></i></span>
+      </button>
+    </form>
+    <form *ngIf="step === 3" [formGroup]="resetPassword" (ngSubmit)="ResetPasswordSubmit()" class="space-y-6 animate-fade-in">
+      <div>
+        <label for="email" class="block mb-2 text-sm font-medium text-blue-700">Email</label>
+        <div class="relative">
+          <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-blue-300"></i>
+          <input readonly formControlName="email" type="email" id="email"
+            class="pl-10 pr-4 py-3 w-full rounded-xl border border-blue-200 focus:ring-2 focus:ring-blue-400 focus:outline-none transition placeholder-gray-400 text-gray-700 bg-white/90 shadow-sm"
+            placeholder="name@gmail.com" />
+        </div>
+      </div>
+      <div>
+        <label for="resetPassword" class="block mb-2 text-sm font-medium text-blue-700">New Password</label>
+        <div class="relative">
+          <i class="fa-solid fa-lock absolute left-3 top-1/2 -translate-y-1/2 text-blue-300"></i>
+          <input formControlName="newPassword" type="password" id="resetPassword"
+            class="pl-10 pr-4 py-3 w-full rounded-xl border border-blue-200 focus:ring-2 focus:ring-blue-400 focus:outline-none transition placeholder-gray-400 text-gray-700 bg-white/90 shadow-sm"
+            placeholder="Enter new password" />
+        </div>
+        <div *ngIf="resetPassword.get('newPassword')?.errors && resetPassword.get('newPassword')?.touched" class="text-red-500 text-xs mt-1 animate-fade-in">
+          <span *ngIf="resetPassword.get('newPassword')?.hasError('required')">Password is required</span>
+          <span *ngIf="resetPassword.get('newPassword')?.hasError('pattern')">Password must start with uppercase and be at least 8 chars</span>
+        </div>
+      </div>
+      <button type="submit"
+        class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-600 text-white font-bold shadow-lg hover:scale-105 transition-transform duration-200 flex items-center justify-center gap-2">
+        <span>Sign in</span>
+        <span *ngIf="isLooding"><i class="fas fa-spin fa-spinner"></i></span>
+      </button>
+    </form>
+  </div>
+</section>
+<style>
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in { animation: fade-in 0.7s; }
+@keyframes slide-up {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-up { animation: slide-up 0.7s cubic-bezier(.4,2,.6,1); }
+@keyframes shake {
+  10%, 90% { transform: translateX(-2px); }
+  20%, 80% { transform: translateX(4px); }
+  30%, 50%, 70% { transform: translateX(-8px); }
+  40%, 60% { transform: translateX(8px); }
+}
+.animate-shake { animation: shake 0.5s; }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-bounce { animation: bounce 1.2s infinite; }
+</style>

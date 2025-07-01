@@ -1,0 +1,45 @@
+<nav class="glass-navbar bg-gradient-to-r from-blue-100 via-cyan-100 to-blue-200 shadow-lg sticky top-0 z-50 animate-navbar-fade-in">
+  <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a routerLink="/home" class="flex items-center gap-3 group animate-logo-pop">
+      <img src="/images/freshcart-logo.svg" class="h-10 drop-shadow group-hover:animate-logo-bounce" alt="FreshCart Logo" />
+
+    </a>
+    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-blue-400 rounded-lg md:hidden hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-200 transition-all duration-200" aria-controls="navbar-default" aria-expanded="false">
+      <span class="sr-only">Open main menu</span>
+      <i class="fa-solid fa-bars text-2xl"></i>
+    </button>
+    <div class="hidden w-full md:flex flex-grow md:w-auto" id="navbar-default">
+      @if (isLogin == true) {
+        <div class="relative group">
+          <button class="main-menu-btn capitalize flex items-center gap-2 focus:outline-none">
+            <span>Menu</span>
+            <i class="fa-solid fa-chevron-down transition-transform duration-200 group-hover:rotate-180"></i>
+          </button>
+          <ul class="absolute left-0 mt-2 w-44 bg-white/90 rounded-xl shadow-lg border border-blue-100 opacity-0 group-hover:opacity-100 group-hover:translate-y-1 transition-all duration-300 z-40 pointer-events-none group-hover:pointer-events-auto animate-dropdown-fade">
+            <li><a routerLink="/home" routerLinkActive="active-link" class="block py-2 px-4 rounded-lg text-blue-700 hover:bg-blue-100 transition-all duration-200">Home</a></li>
+            <li><a routerLink="/categories" routerLinkActive="active-link" class="block py-2 px-4 rounded-lg text-blue-700 hover:bg-blue-100 transition-all duration-200">Categories</a></li>
+            <li><a routerLink="/products" routerLinkActive="active-link" class="block py-2 px-4 rounded-lg text-blue-700 hover:bg-blue-100 transition-all duration-200">Products</a></li>
+            <li><a routerLink="/brands" routerLinkActive="active-link" class="block py-2 px-4 rounded-lg text-blue-700 hover:bg-blue-100 transition-all duration-200">Brands</a></li>
+          </ul>
+        </div>
+      }
+      <ul class="items-center text-center capitalize ms-auto font-medium flex flex-col p-4 md:p-0 mt-4 border border-blue-100 rounded-lg md:flex-row md:space-x-3 rtl:space-x-reverse md:mt-0 md:border-0 bg-white/70 md:bg-transparent animate-fade-in">
+        <li><a href="#" class="block py-2 px-3 rounded-lg text-blue-500 hover:text-blue-700 transition"><i class="fa-brands fa-facebook"></i></a></li>
+        <li><a href="#" class="block py-2 px-3 rounded-lg text-blue-400 hover:text-blue-700 transition"><i class="fa-brands fa-twitter"></i></a></li>
+        <li><a href="#" class="block py-2 px-3 rounded-lg text-blue-500 hover:text-blue-700 transition"><i class="fa-brands fa-linkedin"></i></a></li>
+        <li><a href="#" class="block py-2 px-3 rounded-lg text-pink-400 hover:text-pink-600 transition"><i class="fa-brands fa-instagram"></i></a></li>
+        <li><a href="#" class="block py-2 px-3 rounded-lg text-red-500 hover:text-red-700 transition"><i class="fa-brands fa-youtube"></i></a></li>
+        <li><a href="#" class="block py-2 px-3 rounded-lg text-black hover:text-blue-700 transition"><i class="fa-brands fa-tiktok"></i></a></li>
+        @if (isLogin == false) {
+          <li><a routerLink="/login" routerLinkActive="active-link" class="block py-2 px-3 rounded-lg text-blue-700 font-semibold hover:bg-blue-100 transition">Login</a></li>
+          <li><a routerLink="/register" routerLinkActive="active-link" class="block py-2 px-3 rounded-lg text-blue-700 font-semibold hover:bg-blue-100 transition">Register</a></li>
+        } @else {
+          <li><a routerLink="/cart" routerLinkActive="active-link" class="block relative py-2 px-3 rounded-lg text-3xl text-blue-700 hover:bg-blue-100 transition"><i class="fa-solid fa-cart-plus fa-2xl"></i><span class="badge bg-blue-600 text-white rounded-3 py-1 px-1 absolute top-0 right-0 text-sm animate-bounce">{{cartCount()}}</span></a></li>
+          <li><a routerLink="/wishlist" routerLinkActive="active-link" class="block relative py-2 px-3 rounded-lg text-2xl text-blue-700 hover:bg-blue-100 transition"><i class="fa-regular fa-heart"></i><span class="badge bg-blue-600 text-white rounded-3 py-1 px-1 absolute top-0 right-0 text-sm animate-bounce">{{wishlistnumber()}}</span></a></li>
+          <li><a role="button" class="block py-2 px-3 rounded-lg text-blue-700 hover:bg-blue-100 transition">Logout</a></li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
+

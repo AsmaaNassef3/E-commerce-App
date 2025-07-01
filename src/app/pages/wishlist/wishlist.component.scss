@@ -1,0 +1,88 @@
+.wishlist-card {
+  background: #fff;
+  box-shadow: 0 4px 32px 0 rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.4s, transform 0.4s, border 0.3s;
+  border: 1.5px solid #ececec;
+  &:hover {
+    box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.16);
+    border: 1.5px solid #bbb;
+    transform: translateY(-6px) scale(1.03);
+  }
+}
+
+.wishlist-img-container {
+  background: #fff;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.4s;
+}
+
+.wishlist-img {
+  transition: transform 0.7s cubic-bezier(.4, 2, .6, 1), filter 0.4s;
+  filter: drop-shadow(0 4px 24px #3478ff22);
+  &:hover {
+    transform: scale(1.12) rotate(-2deg);
+    filter: drop-shadow(0 8px 32px #3478ff33);
+  }
+}
+
+.wishlist-body h3 {
+  transition: color 0.3s;
+  &:hover {
+    color: #2563eb;
+  }
+}
+
+.wishlist-btn-add {
+  opacity: 0;
+  transform: translateY(30%);
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(.4, 2, .6, 1);
+}
+.wishlist-card:hover .wishlist-btn-add {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.wishlist-remove {
+  z-index: 10;
+  box-shadow: 0 2px 8px 0 #e0e0e0;
+  transition: background 0.3s, transform 0.3s;
+}
+.wishlist-remove:hover {
+  background: #f5f5f5;
+  transform: scale(1.13) rotate(-8deg);
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.7s cubic-bezier(.4, 2, .6, 1);
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+// Remove old .card styles
+.card, .card-img, .card-body, .card button {
+  all: unset;
+}
+
+// Update icon colors to modern gray/neutral
+.wishlist-card i.fa-heart,
+.wishlist-card i.fa-layer-group,
+.wishlist-card i.fa-trash,
+.wishlist-card i.fa-cart-plus {
+  color: #8e8e8e !important; // modern medium gray
+  transition: color 0.3s;
+}
+.wishlist-card i.fa-star {
+  color: #ffb450 !important;
+}
+.wishlist-card:hover i.fa-cart-plus,
+.wishlist-card:hover i.fa-trash,
+.wishlist-card:hover i.fa-heart {
+  color: #5c5c5c !important; // slightly darker gray on hover
+}
