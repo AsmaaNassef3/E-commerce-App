@@ -11,7 +11,7 @@ export const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
 
   // 🔐 Authentication Layout (login/register/forgot password)
@@ -22,42 +22,50 @@ export const routes: Routes = [
       {
         path: 'login',
         loadComponent: () =>
-          import('./pages/login/login.component').then(m => m.LoginComponent),
+          import('./pages/login/login.component').then((m) => m.LoginComponent),
         title: 'Login',
-        canActivate: [loginGuard]
+        canActivate: [loginGuard],
       },
       {
         path: 'register',
         loadComponent: () =>
-          import('./pages/register/register.component').then(m => m.RegisterComponent),
+          import('./pages/register/register.component').then(
+            (m) => m.RegisterComponent
+          ),
         title: 'Register',
-        canActivate: [loginGuard]
+        canActivate: [loginGuard],
       },
       {
         path: 'forgotpas',
         loadComponent: () =>
-          import('./pages/forgotpas/forgotpas.component').then(m => m.ForgotpasComponent),
+          import('./pages/forgotpas/forgotpas.component').then(
+            (m) => m.ForgotpasComponent
+          ),
         title: 'Forgot Password',
-        canActivate: [loginGuard]
+        canActivate: [loginGuard],
       },
       {
         path: 'verify-code',
         loadComponent: () =>
-          import('./pages/forgotpas/forgotpas.component').then(m => m.ForgotpasComponent),
+          import('./pages/forgotpas/forgotpas.component').then(
+            (m) => m.ForgotpasComponent
+          ),
         title: 'Verify Code',
-        canActivate: [loginGuard]
+        canActivate: [loginGuard],
       },
       {
         path: 'reset-password',
         loadComponent: () =>
-          import('./pages/forgotpas/forgotpas.component').then(m => m.ForgotpasComponent),
+          import('./pages/forgotpas/forgotpas.component').then(
+            (m) => m.ForgotpasComponent
+          ),
         title: 'Reset Password',
-        canActivate: [loginGuard]
-      }
-    ]
+        canActivate: [loginGuard],
+      },
+    ],
   },
 
-  // 🏠 Main App Layout (Home and protected pages)
+ 
   {
     path: '',
     component: BlankComponent,
@@ -67,73 +75,80 @@ export const routes: Routes = [
       {
         path: 'home',
         loadComponent: () =>
-          import('./pages/home/home.component').then(m => m.HomeComponent),
+          import('./pages/home/home.component').then((m) => m.HomeComponent),
         title: 'Home',
-
       },
       {
         path: 'products',
         loadComponent: () =>
-          import('./pages/products/products.component').then(m => m.ProductsComponent),
+          import('./pages/products/products.component').then(
+            (m) => m.ProductsComponent
+          ),
         title: 'Products',
-
       },
       {
         path: 'cart',
         loadComponent: () =>
-          import('./pages/cart/cart.component').then(m => m.CartComponent),
+          import('./pages/cart/cart.component').then((m) => m.CartComponent),
         title: 'Cart',
-        canActivate: [authGuard]
+        canActivate: [authGuard],
       },
       {
         path: 'wishlist',
         loadComponent: () =>
-          import('./pages/wishlist/wishlist.component').then(m => m.WishlistComponent),
+          import('./pages/wishlist/wishlist.component').then(
+            (m) => m.WishlistComponent
+          ),
         title: 'Wishlist',
-        canActivate: [authGuard]
+        canActivate: [authGuard],
       },
       {
         path: 'brands',
         loadComponent: () =>
-          import('./pages/brands/brands.component').then(m => m.BrandsComponent),
+          import('./pages/brands/brands.component').then(
+            (m) => m.BrandsComponent
+          ),
         title: 'Brands',
-
       },
       {
         path: 'categories',
         loadComponent: () =>
-          import('./pages/categories/categories.component').then(m => m.CategoriesComponent),
+          import('./pages/categories/categories.component').then(
+            (m) => m.CategoriesComponent
+          ),
         title: 'Categories',
-
       },
       {
         path: 'details/:id',
         loadComponent: () =>
-          import('./pages/details/details.component').then(m => m.DetailsComponent),
+          import('./pages/details/details.component').then(
+            (m) => m.DetailsComponent
+          ),
         title: 'Product Details',
-
       },
 
       {
         path: 'checkout/:id',
         loadComponent: () =>
-          import('./pages/checkout/checkout.component').then(m => m.CheckoutComponent),
+          import('./pages/checkout/checkout.component').then(
+            (m) => m.CheckoutComponent
+          ),
         title: 'Checkout',
-
       },
- {
+      {
         path: 'allorders',
         loadComponent: () =>
-          import('./pages/allorders/allorders.component').then(m => m.AllordersComponent),
+          import('./pages/allorders/allorders.component').then(
+            (m) => m.AllordersComponent
+          ),
         title: 'All Orders',
-
       },
-      // 404 Not Found
+
       {
         path: '**',
         component: NotfoundComponent,
-        title: 'Not Found'
-      }
-    ]
-  }
+        title: 'Not Found',
+      },
+    ],
+  },
 ];
