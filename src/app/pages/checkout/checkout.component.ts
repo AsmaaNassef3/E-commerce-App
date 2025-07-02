@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { OrdersService } from '../../core/servies/orders/orders.service';
 
 @Component({
@@ -13,7 +13,6 @@ export class CheckoutComponent implements OnInit {
 private readonly formBuilder =inject(FormBuilder);
 private readonly activatedRoute =inject(ActivatedRoute);
 private readonly ordersService =inject(OrdersService);
-private readonly router = inject(Router);
 cartId:string=''
 checkOutForm !:FormGroup
 ngOnInit(): void {
@@ -31,32 +30,28 @@ this.checkOutForm = this.formBuilder.group({
    })
 }
 
-  submitForm(): void {
-    if (this.checkOutForm.valid) {
-      this.ordersService.checkOutPayMent(this.cartId, this.checkOutForm.value).subscribe({
-        next: (res) => {
-          if (res.status === 'success') {
-            if (res.session && res.session.url) {
-              
+submitForm():void{
 
-              window.open(res.session.url, '_self');
-            } else {
-              // ✅ الدفع تم بدون Gateway خارجي
-              this.router.navigate(['/allorders']);
-            }
-          }
-        },
-        error: (err) => {
-          console.error(err);
-        }
-      });
-    } else {
-      console.log('form is invalid');
+if(this.checkOutForm.valid){
+  console.log(this.checkOutForm.value)
+}
+else{
+  console.log("form is invalid")
+}
+this.ordersService.checkOutPayMent(this.cartId , this.checkOutForm.value).subscribe({
+
+  next:(res)=>{
+    console.log(res)
+    if(res.status =='success'){
+open(res.session.url,'_self')
     }
-
+  },
+  error:(err)=>{
+    console.log(err)
   }
+})
 
-
+}
 
 getCartId():void{
 this.activatedRoute.paramMap.subscribe({
