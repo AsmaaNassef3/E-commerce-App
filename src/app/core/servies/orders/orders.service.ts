@@ -14,7 +14,7 @@ checkOutPayMent(id:string , data:object):Observable<any>{
 
   return this.httpClient.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=https://e-commerce-app-lyart-gamma.vercel.app`,
     {
-      "shippingAddress":data
+      "shippingAdress":data
   },
   )
 }
