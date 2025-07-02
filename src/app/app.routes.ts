@@ -113,13 +113,7 @@ export const routes: Routes = [
         title: 'Product Details',
 
       },
-      {
-        path: 'allorders',
-        loadComponent: () =>
-          import('./pages/allorders/allorders.component').then(m => m.AllordersComponent),
-        title: 'All Orders',
 
-      },
       {
         path: 'checkout/:id',
         loadComponent: () =>
@@ -127,7 +121,13 @@ export const routes: Routes = [
         title: 'Checkout',
 
       },
+ {
+        path: 'allorders',
+        loadComponent: () =>
+          import('./pages/allorders/allorders.component').then(m => m.AllordersComponent),
+        title: 'All Orders',
 
+      },
       // 404 Not Found
       {
         path: '**',
